@@ -1,0 +1,13 @@
+sudo raspi-config
+
+2. System Options 선택
+raspi-config 메뉴에서 System Options를 선택합니다.
+
+3. Boot / Auto Login 선택
+System Options 메뉴에서 Boot / Auto Login을 선택합니다.
+
+4. Console 또는 Desktop 자동 로그인 설정
+이 단계에서 원하는 로그인 모드를 선택합니다. CLI 모드에서 자동 로그인을 원한다면 다음을 선택합니다.
+
+Console Autologin: CLI 모드에서 자동 로그인
+Desktop Autologin: GUI 모드에서 자동 로그인 (만약 데스크탑 환경을 사용 중이라면)

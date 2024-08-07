@@ -1,0 +1,43 @@
+sudo nano /home/pi/wifi_connect.sh
+
+
+#!/bin/bash
+
+CONFIG_FILE="/home/pi/Desktop/wifi_config.txt"
+
+if [ -f "$CONFIG_FILE" ]; then
+    SSID=$(sed -n '1p' "$CONFIG_FILE")
+    PSK=$(sed -n '2p' "$CONFIG_FILE")
+
+    if [ -n "$SSID" ] && [ -n "$PSK" ]; then
+        cat <<EOF > /etc/wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+    ssid="$SSID"
+    psk="$PSK"
+    key_mgmt=WPA-PSK
+    priority=1
+}
+EOF
+
+        wpa_cli -i wlan0 reconfigure
+    fi
+fi
+
+
+sudo chmod +x /home/pi/wifi_connect.sh
+
+sudo crontab -e
+
+@reboot /home/pi/wifi_connect.sh
+
+
+nano /home/pi/Desktop/wifi_config.txt
+
+iptime_1
+your_wifi_password
+
+sudo reboot

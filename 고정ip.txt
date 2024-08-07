@@ -1,0 +1,59 @@
+sudo nano /etc/dhcpcd.conf
+
+interface wlan0
+static ip_address=192.168.1.10
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1 8.8.8.8 fd51:42f8:caae:d92e::l
+static netmask=255.255.255.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+    ssid="iptime_1"
+    psk="12345678"
+    key_mgmt=WPA-PSK
+}
+
+
+sudo apt-get install dhcpcd5
+
+sudo nano /etc/dhcpcd.conf
+
+
+interface wlan0
+static ip_address=192.168.1.10/24
+static routers=192.168.0.1
+static domain_name_servers=8.8.8.8 8.8.4.4
+
+sudo systemctl status wpa_supplicant
+sudo systemctl restart wpa_supplicant
+
+sudo ifdown wlan0
+sudo ifup wlan0
+
+sudo reboot

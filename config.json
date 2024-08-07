@@ -1,0 +1,23 @@
+{
+    "racks": {
+        "1": "rack_mode",
+        "2": "rack_mode",
+        "3": "center_mode",
+        "4": "rack_mode",
+        "5": "rack_mode",
+        "6": "rack_mode",
+        "7": "rack_mode",
+        "8": "rack_mode",
+        "9": "rack_mode",
+        "10": "rack_mode"
+    },
+    "rack_mode": {
+        "host": "192.168.0.5",
+        "user": "bms_user",
+        "password": "a1298db",
+        "database": "bms"
+    },
+    "center_mode": {
+        "api_server_url": "http://mirudeveloper.iptime.org:8080"
+    }
+}

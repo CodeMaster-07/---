@@ -1,0 +1,28 @@
+sudo nano /etc/systemd/system/battery_monitor.service
+
+
+[Unit]
+Description=Battery Monitor Service
+After=network.target
+
+[Service]
+ExecStartPre=/bin/sleep 120
+ExecStart=/usr/bin/python3 /home/pi/Desktop/pi/pi.py
+WorkingDirectory=/home/pi/Desktop/pi
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+sudo chmod 644 /etc/systemd/system/battery_monitor.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable battery_monitor.service
+sudo systemctl start battery_monitor.service
+sudo systemctl status battery_monitor.service
